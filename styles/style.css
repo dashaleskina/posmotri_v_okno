@@ -13,9 +13,11 @@ html {
   block-size: 100%;
   margin: auto;
   color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  display: flex;
+  align-items: center;
 }
 
 h1,
@@ -30,9 +32,276 @@ blockquote,
 fieldset {
   margin: 0;
   padding: 0;
+  border: none;
 }
 
 ul,
 ol {
   list-style: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ОЦЕНТРОВКА КОНТЕНТА */
+.content {
+  display: flex;
+  margin: auto;
+  column-gap: 30px;
+  inline-size: 1140px;
+}
+
+/* БЛОК 1 - УПРАВЛЕНИЕ ПОИСКОМ КОНТЕНТА И ВИДЕО */
+
+.result {
+  align-self: flex-end;
+}
+
+/* видео */
+.result__video-container {
+  position: relative;
+  width: 711px;
+  height: 386px;
+}
+
+.result__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* форма управления */
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+/* поисковая строка "Город" */
+.search-form__fieldset-title {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.6px;
+  text-align: left;
+}
+
+.search-form__textfield {
+  border: none;
+  width: 225px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: #1b1919;
+  margin-top: 5px;
+}
+
+.search-form__label {
+  display: flex;
+  gap: 5px;
+}
+
+.search-form__label-text:hover {
+  text-decoration: underline;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #ffffff;
+  outline-offset: 1px;
+}
+
+/* чекбоксы "Время суток" */
+.search-form__pseudo-checkbox {
+  width: 19px;
+  height: 19px;
+  border: 1px solid white;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: white;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 16px;
+  margin-top: 5px;
+}
+
+/* общая стилизация кнопок на странице */
+.button:focus {
+  outline: none;
+}
+
+.button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* кнопка "Найти" */
+.search-form__submit-button {
+  width: 194px;
+  align-self: flex-end;
+  padding: 5px 0;
+}
+
+.search-form__submit-button:active {
+  text-decoration: none;
+  background-color: #545050;
+}
+
+.search-form__submit-button:hover {
+  text-decoration: underline;
+}
+
+.search-form__submit-button:focus {
+  outline: none;
+}
+
+.search-form__submit-button:focus-visible {
+  outline: 1px solid white;
+  outline-offset: 1px;
+}
+
+/* БЛОК 2 - ЗАГОЛОВОК И КАРТОЧКИ ГОРОДОВ */
+
+.content__details {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-top: auto;
+}
+
+/* заголовок "Посмотри в окно" */
+.title {
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
+  font-size: 75px;
+  text-transform: uppercase;
+  line-height: 70.5px;
+  padding-bottom: 22px;
+}
+
+.content__accent {
+  color: #545050;
+}
+
+/* список карточек */
+.content__list {
+  position: relative;
+  height: 297px;
+  overflow-y: scroll;
+}
+
+.content__list::-webkit-scrollbar {
+  width: 0;
+}
+
+.content__list-item:not(:last-child) {
+  margin-bottom: 35px;
+}
+
+.content__list-item:has(.content__card-link_current) {
+  background-color: #545050;
+}
+
+.content__card-link {
+  display: block;
+  text-decoration: none;
+  color: white;
+  margin: 2px 2px 4px;
+}
+
+.content__card-link:active {
+  background-color: #545050;
+  text-decoration: none;
+}
+
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__card-link:focus-visible {
+  outline: 1px solid white;
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+}
+
+/* карточки по отдельности */
+.content__video-card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.content__video-card-title {
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 30px;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 1px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.content__video-card-description {
+  color: white;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.content__video-card-thumbnail {
+  width: 192px;
+  height: 103px;
+  object-fit: cover;
+}
+
+/* кнопка "Показать ещё" */
+.more-button {
+  width: 100%;
+  padding: 6px 0;
+}
+
+.more-button:active {
+  text-decoration: none;
+  background-color: #545050;
+}
+
+.more-button:hover {
+  text-decoration: underline;
+}
+
+.more-button:focus {
+  outline: none;
+}
+
+.more-button:focus-visible {
+  outline: 1px solid white;
+  outline-offset: 1px;
 }
