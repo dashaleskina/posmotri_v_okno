@@ -96,21 +96,31 @@ ol {
 .search-form__textfield {
   border: none;
   width: 225px;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
-  color: rgba(255, 255, 255, 0.7);
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  color: white;
   font-family: inherit;
   font-size: 18px;
   font-weight: 400;
-  background-color: #1b1919;
+  background-color: transparent;
   margin-top: 5px;
+}
+
+.search-form__textfield:focus {
+  outline: none;
+}
+
+.search-form__textfield:focus-visible {
+  outline: none;
 }
 
 .search-form__label {
   display: flex;
   gap: 5px;
+  align-items: center;
 }
 
+.search-form__label:hover,
 .search-form__label-text:hover {
   text-decoration: underline;
 }
@@ -151,12 +161,31 @@ ol {
 .button {
   background-color: transparent;
   color: white;
-  border: 1px solid white;
-  font-family: "Fira Sans Condensed", sans-serif;
+  border: 1px solid currentColor;
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 700;
+  line-height: 21.6px;
   text-align: center;
   cursor: pointer;
+}
+
+.button:active {
+  text-decoration: none;
+  background-color: #545050;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: 1px solid white;
+  outline-offset: 1px;
 }
 
 /* кнопка "Найти" */
@@ -164,24 +193,6 @@ ol {
   width: 194px;
   align-self: flex-end;
   padding: 5px 0;
-}
-
-.search-form__submit-button:active {
-  text-decoration: none;
-  background-color: #545050;
-}
-
-.search-form__submit-button:hover {
-  text-decoration: underline;
-}
-
-.search-form__submit-button:focus {
-  outline: none;
-}
-
-.search-form__submit-button:focus-visible {
-  outline: 1px solid white;
-  outline-offset: 1px;
 }
 
 /* БЛОК 2 - ЗАГОЛОВОК И КАРТОЧКИ ГОРОДОВ */
@@ -211,11 +222,7 @@ ol {
 .content__list {
   position: relative;
   height: 297px;
-  overflow-y: scroll;
-}
-
-.content__list::-webkit-scrollbar {
-  width: 0;
+  overflow-y: auto;
 }
 
 .content__list-item:not(:last-child) {
@@ -280,6 +287,7 @@ ol {
   width: 192px;
   height: 103px;
   object-fit: cover;
+  object-position: center;
 }
 
 /* кнопка "Показать ещё" */
@@ -288,20 +296,3 @@ ol {
   padding: 6px 0;
 }
 
-.more-button:active {
-  text-decoration: none;
-  background-color: #545050;
-}
-
-.more-button:hover {
-  text-decoration: underline;
-}
-
-.more-button:focus {
-  outline: none;
-}
-
-.more-button:focus-visible {
-  outline: 1px solid white;
-  outline-offset: 1px;
-}
